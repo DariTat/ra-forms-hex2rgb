@@ -4,7 +4,7 @@ export default function Converter() {
     const [hex, setHex] = useState('')
    
     const handleChange = (event) => {
-      const { value} = event.target
+      const { value }  = event.target
       if (value.length === 7) {
         const result = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(value);
         if (result === null) {
@@ -15,6 +15,9 @@ export default function Converter() {
           ${parseInt(result[2], 16)},
           ${parseInt(result[3], 16)}`;
         setHex(`rgb(${rgb})`);
+      } else if (value.length > 7) {
+        setHex('Error');
+        return
       }
     }
   
